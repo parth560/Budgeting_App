@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      // instead of the generated sample widget, we'll use our own custom widget
+      // instead of the generated sample widget, we'll use our own custom widget 
       // as the default widget we'll show on opening the app
       home: const SpendingPage(),
     );

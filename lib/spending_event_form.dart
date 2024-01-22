@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'spending_event.dart';
 
 class SpendingEventForm extends StatelessWidget {
@@ -20,7 +19,7 @@ class SpendingEventForm extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
             title: const Center(
-          child: Text('Demo Budgeting App'),
+          child: Text('Budgeting App'),
         )),
         // A "safe area" is the area that won't overlap with the camera notch,
         // rounded edges of the screen, the OS's notifications, etc.
