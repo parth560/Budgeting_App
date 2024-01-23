@@ -13,15 +13,23 @@ class SpendingPage extends StatefulWidget {
 class _SpendingPageState extends State<SpendingPage> {
   final List<SpendingEvent> _spendingEvents = [];
 
-  _addSpendingEvent(SpendingEvent spendingEvent) {}
+  _addSpendingEvent(SpendingEvent spendingEvent) {
+    _spendingEvents.add(spendingEvent);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return PageView(
-      children: [
-        SpendingEventForm(_addSpendingEvent),
-        SpendingHistory(_spendingEvents)
-      ],
+    return Scaffold(
+      appBar: AppBar(
+          title: const Center(
+        child: Text('Budgeting App'),
+      )),
+      body: PageView(
+        children: [
+          SpendingEventForm(_addSpendingEvent),
+          SpendingHistory(_spendingEvents)
+        ],
+      ),
     );
   }
 }
