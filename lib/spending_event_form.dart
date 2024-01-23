@@ -1,16 +1,28 @@
 import 'package:flutter/material.dart';
 import 'spending_event.dart';
 
-class SpendingEventForm extends StatelessWidget {
+class SpendingEventForm extends StatefulWidget {
   final void Function(SpendingEvent event) addSpendingEvent;
 
   const SpendingEventForm(this.addSpendingEvent, {super.key});
+  @override
+  createState() => _SpendingEventFormState();
+}
 
+class _SpendingEventFormState extends State<SpendingEventForm> {
+  final TextEditingController _merchantController = TextEditingController();
+  final TextEditingController _categoryController = TextEditingController();
+  final TextEditingController _amountController = TextEditingController();
+  final TextEditingController _dateController = TextEditingController();
   // a callback method that we'll use to handle user input
   void _onSavePressed() {
     print('User tried to save data');
-    SpendingEvent event = SpendingEvent("", "", 12.00, DateTime.now());
-    addSpendingEvent(event);
+    SpendingEvent event = SpendingEvent(
+        _merchantController.text,
+        _categoryController.text,
+        double.parse(_amountController.text),
+        DateTime.parse(_dateController.text));
+    widget.addSpendingEvent(event);
     // TODO: call addSpendingEvent
   }
 
@@ -25,22 +37,31 @@ class SpendingEventForm extends StatelessWidget {
       child: SingleChildScrollView(
           child: Column(children: [
         const Text('Add Event', style: TextStyle(fontSize: 48)),
-        const TextField(
-          decoration: InputDecoration(labelText: 'Merchant'),
+        TextFormField(
+          decoration: const InputDecoration(labelText: 'Merchant'),
+          controller: _merchantController,
         ),
         const Text('Category'),
-        const DropdownMenu(dropdownMenuEntries: []),
-        const Row(mainAxisSize: MainAxisSize.min, children: [
-          Text('Amount'),
+        DropdownMenu(
+          dropdownMenuEntries: const [
+            DropdownMenuEntry(value: 'a', label: 'a'),
+            DropdownMenuEntry(value: 'b', label: 'b')
+          ],
+          controller: _categoryController,
+        ),
+        Row(mainAxisSize: MainAxisSize.min, children: [
+          const Text('Amount'),
           Expanded(
             child: TextField(
               keyboardType: TextInputType.number,
+              controller: _amountController,
             ),
           )
         ]),
         const Text('Date'),
-        const TextField(
+        TextFormField(
           keyboardType: TextInputType.datetime,
+          controller: _dateController,
         ),
         ElevatedButton(
             // Note: we are not calling _onSavePressed! We are passing it

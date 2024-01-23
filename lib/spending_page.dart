@@ -14,6 +14,7 @@ class _SpendingPageState extends State<SpendingPage> {
   final List<SpendingEvent> _spendingEvents = [];
 
   _addSpendingEvent(SpendingEvent spendingEvent) {
+    setState(() {});
     _spendingEvents.add(spendingEvent);
   }
 
@@ -24,10 +25,10 @@ class _SpendingPageState extends State<SpendingPage> {
           title: const Center(
         child: Text('Budgeting App'),
       )),
-      body: PageView(
+      body: ListView(
         children: [
-          SpendingEventForm(_addSpendingEvent),
-          SpendingHistory(_spendingEvents)
+          SizedBox(height: 600, child: SpendingEventForm(_addSpendingEvent)),
+          SizedBox(height: 1200, child: SpendingHistory(_spendingEvents))
         ],
       ),
     );
