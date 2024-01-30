@@ -7,7 +7,18 @@ class SpendingHistory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return Column(
+      children: _spendingEvents
+          .map((event) => ListTile(
+                leading: Text(event.category),
+                title: Text(event.merchant),
+                subtitle: Text('${event.amount}'),
+                trailing: Text('${event.date}'),
+              ))
+          .toList(),
+    );
+    /*return ListView.builder(
+      shrinkWrap: true,
       itemCount: _spendingEvents.length,
       itemBuilder: (BuildContext context, int index) {
         return ListTile(
@@ -17,6 +28,6 @@ class SpendingHistory extends StatelessWidget {
           trailing: Text('${_spendingEvents[index].date}'),
         );
       },
-    );
+    );*/
   }
 }

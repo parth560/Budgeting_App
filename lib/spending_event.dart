@@ -1,3 +1,4 @@
+
 class SpendingEvent {
   final String merchant;
   final String category;

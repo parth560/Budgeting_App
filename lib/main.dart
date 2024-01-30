@@ -1,5 +1,6 @@
+import 'package:campus/bank_account.dart';
 import 'package:flutter/material.dart';
-import './spending_event_form.dart';
+import 'package:provider/provider.dart';
 import 'spending_page.dart';
 
 void main() {
@@ -11,15 +12,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      // instead of the generated sample widget, we'll use our own custom widget
-      // as the default widget we'll show on opening the app
-      home: const SpendingPage(),
-    );
+    return ChangeNotifierProvider(
+        create: (context) => BankAccount(2024.00),
+        child: MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: true,
+          ),
+          // instead of the generated sample widget, we'll use our own custom widget
+          // as the default widget we'll show on opening the app
+          home: const SpendingPage(),
+        ));
   }
 }

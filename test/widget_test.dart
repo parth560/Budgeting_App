@@ -11,6 +11,16 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:campus/main.dart';
 
 void main() {
+  /*
+     tester:
+       - given to us as a parameter of the test
+       - lets us trigger things on the screen:
+         - pumpWidget puts a widget on the screen
+         - tap, keyPress, longPress, etc. let us simulate user inputs
+         - pump will trigger one frame of updates to our widgets (a single re-build)
+         - pumpAndSettle will pump in a loop until nothing changes
+
+   */
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MyApp());
